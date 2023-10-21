@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.ilkerozcan.iocomposesample"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.ilkerozcan.iocomposesample"
@@ -26,6 +26,137 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
+    flavorDimensions += "environment"
+    productFlavors {
+        create("development") {
+            buildConfigField(
+                "String",
+                "GENERAL_ENVIRONMENT",
+                "\"development\""
+            )
+            buildConfigField(
+                "String",
+                "GENERAL_FILE_CACHE_DIRECTORY_NAME",
+                "\"ioFileCache\""
+            )
+            buildConfigField(
+                "String",
+                "LOCALIZATION_DEFAULT_LOCALE_IDENTIFIER",
+                "\"en_US\""
+            )
+            buildConfigField(
+                "String",
+                "LOCAL_STORAGE_PREFIX",
+                "\"ioCompose_\""
+            )
+            buildConfigField(
+                "String",
+                "LOGGING_LOG_LEVEL",
+                "\"verbose\""
+            )
+            buildConfigField(
+                "String",
+                "NETWORKING_API_TIMEOUT",
+                "\"90\""
+            )
+            buildConfigField(
+                "String",
+                "NETWORKING_API_URL",
+                "\"http://192.168.1.6:5176\""
+            )
+            buildConfigField(
+                "String",
+                "NETWORKING_AUTHORIZATION_HEADER",
+                "\"n812iw9h0ya7r0ne4qekkcslzi2dsnjc\""
+            )
+        }
+        create("dev") {
+            buildConfigField(
+                "String",
+                "GENERAL_ENVIRONMENT",
+                "\"dev\""
+            )
+            buildConfigField(
+                "String",
+                "GENERAL_FILE_CACHE_DIRECTORY_NAME",
+                "\"ioFileCache\""
+            )
+            buildConfigField(
+                "String",
+                "LOCALIZATION_DEFAULT_LOCALE_IDENTIFIER",
+                "\"en_US\""
+            )
+            buildConfigField(
+                "String",
+                "LOCAL_STORAGE_PREFIX",
+                "\"ioCompose_\""
+            )
+            buildConfigField(
+                "String",
+                "LOGGING_LOG_LEVEL",
+                "\"verbose\""
+            )
+            buildConfigField(
+                "String",
+                "NETWORKING_API_TIMEOUT",
+                "\"90\""
+            )
+            buildConfigField(
+                "String",
+                "NETWORKING_API_URL",
+                "\"https://ioswiftui-01-test.azurewebsites.net\""
+            )
+            buildConfigField(
+                "String",
+                "NETWORKING_AUTHORIZATION_HEADER",
+                "\"n812iw9h0ya7r0ne4qekkcslzi2dsnjc\""
+            )
+        }
+        create("production") {
+            buildConfigField(
+                "String",
+                "GENERAL_ENVIRONMENT",
+                "\"production\""
+            )
+            buildConfigField(
+                "String",
+                "GENERAL_FILE_CACHE_DIRECTORY_NAME",
+                "\"ioFileCache\""
+            )
+            buildConfigField(
+                "String",
+                "LOCALIZATION_DEFAULT_LOCALE_IDENTIFIER",
+                "\"en_US\""
+            )
+            buildConfigField(
+                "String",
+                "LOCAL_STORAGE_PREFIX",
+                "\"ioCompose_\""
+            )
+            buildConfigField(
+                "String",
+                "LOGGING_LOG_LEVEL",
+                "\"error\""
+            )
+            buildConfigField(
+                "String",
+                "NETWORKING_API_TIMEOUT",
+                "\"30\""
+            )
+            buildConfigField(
+                "String",
+                "NETWORKING_API_URL",
+                "\"http://localhost:6666\""
+            )
+            buildConfigField(
+                "String",
+                "NETWORKING_AUTHORIZATION_HEADER",
+                "\"\""
+            )
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -35,6 +166,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -48,9 +180,9 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.activity:activity-compose:1.7.0")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("androidx.activity:activity-compose:1.8.0")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
